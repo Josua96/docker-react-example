@@ -1,0 +1,19 @@
+FROM node:16-alpine  
+#specific version of node to avoid issues seems the node:alpine image can change and break the app
+
+USER node
+
+RUN mkdir -p /home/node/app
+
+WORKDIR /home/node/app
+
+
+COPY --chown=node:node ./package.json ./
+
+# this will run only if the package.json has not changed
+RUN npm install 
+
+# copy all the rest files of the react app
+COPY --chown=node:node ./ ./
+
+CMD ["npm", "run", "start"]
