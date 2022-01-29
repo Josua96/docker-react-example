@@ -14,4 +14,4 @@ before_install: # this step will execute commands before running tests or deploy
 script:
   # -e flag is used to set value to any environment variable
   #the ev CI=true tell npm run test that test should be executed only once. Jest will run in CI mode
-  - docker run -e CI=true josua/docker-react npm run test  
+  - docker run -e CI=true josua96/docker-react npm run test  
