@@ -7,7 +7,7 @@ services:
 
 before_install: # this step will execute commands before running tests or deploying the application
  # using the tag flag (-t) to reference the created image by tag later in next steps
-  - docker build -t josua96/docker-react -f Dockerfie.dev . 
+  - docker build -t josua96/docker-react -f Dockerfile.dev . 
 
  # commands to be executed to perform the desired action (running test, deploying)
  # travis will asusme that the build failed if any of the following comands finished with status code different than zero
