@@ -1,0 +1,17 @@
+language: generic
+sudo: required # tell travis we need super user permissions (sudo permisions)
+
+services: 
+  - docker # tell travis that docker muts be installed before doing something
+
+
+before_install: # this step will execute commands before running tests or deploying the application
+ # using the tag flag (-t) to reference the created image by tag later in next steps
+  - docker build -t josua96/docker-react -f Dockerfie.dev . 
+
+ # commands to be executed to perform the desired action (running test, deploying)
+ # travis will asusme that the build failed if any of the following comands finished with status code different than zero
+script:
+  # -e flag is used to set value to any environment variable
+  #the ev CI=true tell npm run test that test should be executed only once. Jest will run in CI mode
+  - docker run -e CI=true josua/docker-react npm run test  
