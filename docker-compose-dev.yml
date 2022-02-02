@@ -1,0 +1,26 @@
+version: '3'
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - "3000:3000"
+    volumes:
+     # do not override the app node_modules folder inside the container (keep it as it is, do not map it up to use the host files within node_modules) 
+      - /home/node/app/node_modules
+      # map all the files that the host has in the folder where this file is located, so container can listen to changes to those files and reload the page
+      - .:/home/node/app
+
+  tests:  # this service would be just for run the tests of the app
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    volumes:
+     # do not override the app node_modules folder inside the container (keep it as it is, do not map it up to use the host files within node_modules) 
+      - /home/node/app/node_modules
+      # map all the files that the host has in the folder where this file is located, so container can listen to changes to those files and reload the page
+      - .:/home/node/app
+    # overriding the default command defined in the Dockerfile.dev
+    command: ["npm", "run", "test"]
+    
