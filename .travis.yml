@@ -37,5 +37,4 @@ deploy:
   
   # References travis environment variables configured to store the access and the secret key of the travis user created in AWS
   access_key_id: $AWS_ACCESS_KEY
-  secret_access_key:
-    secure: "$AWS_SECRET_KEY"
+  secret_access_key: $AWS_SECRET_KEY
