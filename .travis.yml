@@ -25,7 +25,7 @@ deploy:
   # app name is the name of your elastic beanstalk application
   app: "docker-react"
   # the environment you have created within your elastic beanstalk app  
-  env: "Dockerreact-env"
+  env: "dockerreact-env"
 
   # travis will take all of the files inside the github repository and it is going to create a zip all files in one
   # after that, travis will copy the zip file to a aws s3 bucket, this is the bucket name
